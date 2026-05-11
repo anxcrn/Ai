@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0f1f" />
+  <title>Power Codex Studio</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <h1>Power Codex Studio</h1>
+    <p>Advanced Codex-style multi-agent PWA for coding, design, automation, and mobile workflows.</p>
+  </header>
+
+  <main>
+    <section class="panel row2">
+      <div>
+        <h2>Agent Teams</h2>
+        <div id="agentGrid" class="agent-grid"></div>
+      </div>
+      <div>
+        <h2>Model + Runtime</h2>
+        <label>Preferred model</label>
+        <select id="modelSelect"></select>
+        <button id="healthBtn">Check Runtime Health</button>
+        <pre id="healthStatus">Idle</pre>
+      </div>
+    </section>
+
+    <section class="panel split">
+      <div>
+        <h2>Mission Composer</h2>
+        <textarea id="taskInput" placeholder="Describe what to build: app, site, animation, 3D flow..."></textarea>
+        <button id="dispatchBtn">Dispatch to Agents</button>
+      </div>
+      <div>
+        <h2>Live Timeline</h2>
+        <ul id="timeline" class="timeline"></ul>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Mobile Control Center</h2>
+      <div class="row">
+        <input id="mobileEndpoint" placeholder="http://localhost:8080/mobile-bridge" />
+        <button id="pingMobileBtn">Ping Mobile Bridge</button>
+      </div>
+      <pre id="mobileStatus">Not connected.</pre>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
