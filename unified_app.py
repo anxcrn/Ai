@@ -110,6 +110,7 @@ MODES = [
     {"id": "brainstorm", "label": "Brainstorm", "icon": "🧩", "desc": "Creative ideation mode (/brainstorm)"},
     {"id": "worker",     "label": "Worker",     "icon": "🔧", "desc": "Background task execution (/worker)"},
     {"id": "ssj",        "label": "SSJ",        "icon": "🚀", "desc": "Speed-run job mode (/ssj)"},
+{"id": "webforge", "label": "WebForge AI", "icon": "🏗️", "desc": "Multi-agent website builder"},
 ]
 
 BUILTIN_SKILLS = [
@@ -148,28 +149,34 @@ def start_process(mode: str, prompt: str, model: str, accept_all: bool, verbose:
         args += ["--model", model]
     if accept_all:
         args.append("--accept-all")
-    if verbose:
-        args.append("--verbose")
+if verbose:
+    args.append("--verbose")
 
-    if mode == "chat":
-        if prompt:
-            args += ["-p", prompt]
-    elif mode == "brainstorm":
-        args += ["-p", f"/brainstorm {prompt}".strip()]
-    elif mode == "worker":
-        args += ["-p", f"/worker {prompt}".strip()]
-    elif mode == "ssj":
-        args += ["-p", "/ssj"]
+if mode == "chat":
+    if prompt:
+        args += ["-p", prompt]
 
-    proc = subprocess.Popen(
-        args,
-        cwd=str(CLAWSPRING_DIR),
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        stdin=subprocess.PIPE,
-        text=True,
-        bufsize=1,
-    )
+elif mode == "brainstorm":
+    args += ["-p", f"/brainstorm {prompt}".strip()]
+
+elif mode == "worker":
+    args += ["-p", f"/worker {prompt}".strip()]
+
+elif mode == "ssj":
+    args += ["-p", "/ssj"]
+
+elif mode == "webforge":
+    args = [sys.executable, "multi_agent_chat.py"]
+
+proc = subprocess.Popen(
+    args,
+    cwd=str(CLAWSPRING_DIR),
+    stdout=subprocess.PIPE,
+    stderr=subprocess.STDOUT,
+    stdin=subprocess.PIPE,
+    text=True,
+    bufsize=1,
+)
 
     pid = str(uuid.uuid4())[:8]
     q: queue.Queue = queue.Queue(maxsize=2000)
