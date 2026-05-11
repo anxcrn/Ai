@@ -6,6 +6,20 @@
 
 Source archive of Claude Code and different versions of the clean-room Python rewrite research repository
 
+
+## Unified single-app launcher (Codex-style)
+
+You can run one entrypoint for multi-agent workflows:
+
+```bash
+python codex_app.py chat
+python codex_app.py brainstorm "Design a plugin architecture"
+python codex_app.py worker
+python codex_app.py ssj
+```
+
+This wraps `clawspring/clawspring.py` and exposes multiple agent modes from a single app command.
+
 ## 🔥🔥🔥 News (Pacific Time)
 - 12:20 PM · Apr 02, 2026: [Nano Claude Code v3.0: Multi-agent packages, memory package, skill package with built-in skills, argument substitution, fork/inline execution, AI memory search, git worktree isolation, agent type definitions (~5000 Lines)](https://github.com/SafeRL-Lab/clawspring)
 - 7:40 AM · Apr 02, 2026: [Nano Claude Code v2.0: A Minimal Python Reimplementation (~3400 Lines), support open and closed source models, skill and memory](https://github.com/SafeRL-Lab/nano-claude-code)
