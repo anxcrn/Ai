@@ -26,8 +26,8 @@ from urllib.request import urlopen, Request
 from urllib.error import URLError, HTTPError
 
 PORT  = 7800
-MODEL = "claude-sonnet-4-20250514"
-API   = "https://api.anthropic.com/v1/messages"
+MODEL = "deepseek/deepseek-chat-v3-0324:free"
+API   = "https://openrouter.ai/api/v1/chat/completions"
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Agent definitions — each has a focused system prompt
@@ -1121,7 +1121,7 @@ class Handler(BaseHTTPRequestHandler):
 # Entry point
 # ─────────────────────────────────────────────────────────────────────────────
 def main():
-    api_key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
+    api_key = os.environ.get("OPENROUTER_API_KEY", "").strip()
     url = f"http://127.0.0.1:{PORT}"
 
     print(f"""
@@ -1129,7 +1129,7 @@ def main():
 ║        WebForge AI — Multi-Agent Builder         ║
 ╠══════════════════════════════════════════════════╣
 ║  Dashboard  →  {url:<33}║
-║  API Key    →  {"✅ Set" if api_key else "❌ NOT SET — export ANTHROPIC_API_KEY":<33}║
+║  API Key    →  {"✅ Set" if api_key else "❌ NOT SET — export OPENROUTER_API_KEY":<33}║
 ║  Model      →  {MODEL:<33}║
 ║  Agents     →  {len(AGENTS)} agents running automatically      ║
 ╚══════════════════════════════════════════════════╝
@@ -1137,7 +1137,7 @@ def main():
 
     if not api_key:
         print("  ⚠  Set your API key first:")
-        print("     export ANTHROPIC_API_KEY='sk-ant-...'")
+        print("     export OPENROUTER_API_KEY='sk-or-...'")
         print()
 
     threading.Thread(target=lambda: (time.sleep(1.2), webbrowser.open(url)), daemon=True).start()
