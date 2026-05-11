@@ -110,6 +110,7 @@ MODES = [
     {"id": "brainstorm", "label": "Brainstorm", "icon": "🧩", "desc": "Creative ideation mode (/brainstorm)"},
     {"id": "worker",     "label": "Worker",     "icon": "🔧", "desc": "Background task execution (/worker)"},
     {"id": "ssj",        "label": "SSJ",        "icon": "🚀", "desc": "Speed-run job mode (/ssj)"},
+    {"id": "webforge",   "label": "WebForge AI", "icon": "🏗️", "desc": "Multi-agent website builder"},
 ]
 
 BUILTIN_SKILLS = [
