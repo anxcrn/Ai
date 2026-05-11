@@ -160,6 +160,8 @@ def start_process(mode: str, prompt: str, model: str, accept_all: bool, verbose:
     elif mode == "worker":
         args += ["-p", f"/worker {prompt}".strip()]
     elif mode == "ssj":
+elif mode == "webforge":
+    args = [sys.executable, "multi_agent_chat.py"]
         args += ["-p", "/ssj"]
 
     proc = subprocess.Popen(
