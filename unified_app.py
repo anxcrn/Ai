@@ -170,7 +170,7 @@ elif mode == "webforge":
 
 proc = subprocess.Popen(
     args,
-    cwd=str(CLAWSPRING_DIR),
+    cwd=str(ROOT),
     stdout=subprocess.PIPE,
     stderr=subprocess.STDOUT,
     stdin=subprocess.PIPE,
